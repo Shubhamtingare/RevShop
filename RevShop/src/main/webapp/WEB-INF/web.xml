@@ -139,4 +139,14 @@
     <servlet-name>DatabaseUtils</servlet-name>
     <url-pattern>/DatabaseUtils</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CartData</display-name>
+    <servlet-name>CartData</servlet-name>
+    <servlet-class>com.revature.data.CartData</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CartData</servlet-name>
+    <url-pattern>/CartData</url-pattern>
+  </servlet-mapping>
 </web-app>
