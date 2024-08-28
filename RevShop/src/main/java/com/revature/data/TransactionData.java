@@ -106,4 +106,11 @@ public class TransactionData implements Serializable {
 	public void setTransAmount(double transAmount) {
 		this.transAmount = transAmount;
 	}
+
+	@Override
+	public String toString() {
+		return "TransactionData [transactionId=" + transactionId + ", userName=" + userName + ", transDateTime="
+				+ transDateTime + ", transAmount=" + transAmount + "]";
+	}
+	
 }
