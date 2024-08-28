@@ -1,0 +1,9 @@
+INDEX VERSION 1.134
+D:\Revature project\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2611222236.index
+\shopping-cart-master\src
+D:\Revature project\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2132174665.index
+\RevShop\src\main\java
+D:\Revature project\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3841129941.index
+\shopping-cart\src
+D:\Revature project\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\278397156.index
+\shopping-cart\src
