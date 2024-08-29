@@ -1,6 +1,8 @@
 package com.revature.data;
 
-public class RequestData {
+import java.io.Serializable;
+
+public class RequestData implements Serializable {
 	private String userName;
 	private String prodId;
 	private int demandQty;

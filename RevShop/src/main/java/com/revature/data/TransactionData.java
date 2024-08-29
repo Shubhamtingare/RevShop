@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
+import com.revature.utilities.IDUtil;
+
 public class TransactionData implements Serializable {
 	private String transactionId;
 

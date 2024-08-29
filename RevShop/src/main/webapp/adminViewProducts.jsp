@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page
+	import="com.revature.service.dao.*, com.revature.service.*,com.revature.data.*,java.util.*,jakarta.servlet.ServletOutputStream,java.io.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +36,7 @@
 
 	}
 	ProductServiceImpl prodDao = new ProductServiceImpl();
-	List<ProductBean> products = new ArrayList<ProductBean>();
+	List<ProductData> products = new ArrayList<ProductData>();
 
 	String search = request.getParameter("search");
 	String type = request.getParameter("type");
@@ -65,7 +67,7 @@
 		<div class="row text-center">
 
 			<%
-			for (ProductBean product : products) {
+			for (ProductData product : products) {
 			%>
 			<div class="col-sm-4" style='height: 350px;'>
 				<div class="thumbnail">

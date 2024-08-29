@@ -149,4 +149,14 @@
     <servlet-name>CartData</servlet-name>
     <url-pattern>/CartData</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>cartService</display-name>
+    <servlet-name>cartService</servlet-name>
+    <servlet-class>com.revature.service.cartService</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>cartService</servlet-name>
+    <url-pattern>/cartService</url-pattern>
+  </servlet-mapping>
 </web-app>

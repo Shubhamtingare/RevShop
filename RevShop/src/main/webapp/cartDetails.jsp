@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page
+	import="com.revature.service.dao.*, com.revature.service.*,com.revature.data.*,java.util.*,jakarta.servlet.ServletOutputStream,java.io.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -86,16 +88,16 @@
 
 				<%
 				CartServiceImpl cart = new CartServiceImpl();
-				List<CartBean> cartItems = new ArrayList<CartBean>();
+				List<CartData> cartItems = new ArrayList<CartData>();
 				cartItems = cart.getAllCartItems(userName);
 				double totAmount = 0;
-				for (CartBean item : cartItems) {
+				for (CartData item : cartItems) {
 
 					String prodId = item.getProdId();
 
 					int prodQuantity = item.getQuantity();
 
-					ProductBean product = new ProductServiceImpl().getProductDetails(prodId);
+					ProductData product = new ProductServiceImpl().getProductDetails(prodId);
 
 					double currAmount = product.getProdPrice() * prodQuantity;
 

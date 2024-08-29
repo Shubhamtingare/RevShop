@@ -1,3 +1,4 @@
+<%@ page import="com.revature.service.dao.*, com.revature.service.*,com.revature.data.*,java.util.*,jakarta.servlet.ServletOutputStream,java.io.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -61,9 +62,9 @@
 
 					<%
 					ProductServiceImpl productDao = new ProductServiceImpl();
-					List<ProductBean> products = new ArrayList<ProductBean>();
+					List<ProductData> products = new ArrayList<ProductData>();
 					products = productDao.getAllProducts();
-					for (ProductBean product : products) {
+					for (ProductData product : products) {
 					%>
 
 					<tr>

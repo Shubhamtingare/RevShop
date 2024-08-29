@@ -12,7 +12,6 @@ public class ProductData implements Serializable{
 	private int prodQuantity;
 	private InputStream prodImage;
 	
-	
 
 	public ProductData() {
 		super();
