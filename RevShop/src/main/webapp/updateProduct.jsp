@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="com.revature.service.dao.*, com.revature.service.*,com.revature.data.*,java.util.*,jakarta.servlet.ServletOutputStream,java.io.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +22,7 @@
 	String uname = (String) session.getAttribute("username");
 	String pwd = (String) session.getAttribute("password");
 	String prodid = request.getParameter("prodid");
-	ProductBean product = new ProductServiceImpl().getProductDetails(prodid);
+	ProductData product = new ProductServiceImpl().getProductDetails(prodid);
 	if (prodid == null || product == null) {
 		response.sendRedirect("updateProductById.jsp?message=Please Enter a valid product Id");
 		return;

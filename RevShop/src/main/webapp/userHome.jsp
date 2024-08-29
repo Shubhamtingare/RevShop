@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page
+	import="com.revature.service.dao.*, com.revature.service.*,com.revature.data.*,java.util.*,jakarta.servlet.ServletOutputStream,java.io.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +29,7 @@
 	}
 
 	ProductServiceImpl prodDao = new ProductServiceImpl();
-	List<ProductBean> products = new ArrayList<ProductBean>();
+	List<ProductData> products = new ArrayList<ProductData>();
 
 	String search = request.getParameter("search");
 	String type = request.getParameter("type");
@@ -53,14 +55,12 @@
 
 	<div class="text-center"
 		style="color: black; font-size: 14px; font-weight: bold;"><%=message%></div>
-	<!-- <script>document.getElementById('mycart').innerHTML='<i data-count="20" class="fa fa-shopping-cart fa-3x icon-white badge" style="background-color:#333;margin:0px;padding:0px; margin-top:5px;"></i>'</script>
- -->
-	<!-- Start of Product Items List -->
+	
 	<div class="container">
 		<div class="row text-center">
 
 			<%
-			for (ProductBean product : products) {
+			for (ProductData product : products) {
 				int cartQty = new CartServiceImpl().getCartItemCount(userName, product.getProdId());
 			%>
 			<div class="col-sm-4" style='height: 350px;'>

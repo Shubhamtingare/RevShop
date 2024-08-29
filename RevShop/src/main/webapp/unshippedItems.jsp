@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ page import="com.revature.service.dao.*, com.revature.data.*,com.revature.service.*,java.util.*"%>
 <!DOCTYPE html>
 <html>
 
@@ -60,10 +61,10 @@
 					<%
 					OrderServiceImpl orderdao = new OrderServiceImpl();
 
-					List<OrderBean> orders = new ArrayList<OrderBean>();
+					List<OrderData> orders = new ArrayList<OrderData>();
 					orders = orderdao.getAllOrders();
 					int count = 0;
-					for (OrderBean order : orders) {
+					for (OrderData order : orders) {
 						String transId = order.getTransactionId();
 						String prodId = order.getProductId();
 						int quantity = order.getQuantity();

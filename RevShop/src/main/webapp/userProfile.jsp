@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.revature.service.dao.*, com.revature.service.*,com.revature.data.*,java.util.*,jakarta.servlet.ServletOutputStream,java.io.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,9 +30,9 @@
 	}
 
 	UserService dao = new UserServiceImpl();
-	UserBean user = dao.getUserDetails(userName, password);
+	UserData user = dao.getUserDetails(userName, password);
 	if (user == null)
-		user = new UserBean("Test User", 98765498765L, "test@gmail.com", "ABC colony, Patna, bihar", 87659, "lksdjf");
+		user = new UserData("Test User", 98765498765L, "test@gmail.com", "ABC colony, Patna, bihar", 87659, "lksdjf");
 	%>
 
 
