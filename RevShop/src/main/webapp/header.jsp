@@ -54,12 +54,12 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="index.jsp"><span
-					class="glyphicon glyphicon-home">&nbsp;</span>Shopping Center</a>
+					class="glyphicon glyphicon-home">&nbsp;</span>RevShop</a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="login.jsp">Login</a></li>
-					<li><a href="register.jsp">Register</a></li>
+					<li><a href="login.jsp">Register</a></li>
+					<li><a href="register.jsp">Login</a></li>
 					<li><a href="index.jsp">Products</a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">Category <span class="caret"></span>
@@ -77,7 +77,7 @@
 		</div>
 	</nav>
 	<%
-	} else if ("customer".equalsIgnoreCase(userType)) { //CUSTOMER HEADER
+	} else if ("customer".equalsIgnoreCase(userType)) { 
 
 	int notf = new CartServiceImpl().getCartCount((String) session.getAttribute("username"));
 	%>
@@ -91,7 +91,7 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="userHome.jsp"><span
-					class="glyphicon glyphicon-home">&nbsp;</span>Shopping Center</a>
+					class="glyphicon glyphicon-home">&nbsp;</span>RevShop</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="myNavbar">
@@ -136,7 +136,7 @@
 		</div>
 	</nav>
 	<%
-	} else { //ADMIN HEADER
+	} else {
 	%>
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
@@ -147,7 +147,7 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="adminViewProduct.jsp"><span
-					class="glyphicon glyphicon-home">&nbsp;</span>Shopping Center</a>
+					class="glyphicon glyphicon-home">&nbsp;</span>RevShop</a>
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav navbar-right">
