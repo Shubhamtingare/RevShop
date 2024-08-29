@@ -176,7 +176,7 @@
 							<li><a href="removeProduct.jsp">Remove Product</a></li>
 							<li><a href="updateProductById.jsp">Update Product</a></li>
 						</ul></li>
-					<li><a href="./LogoutSrv">Logout</a></li>
+					<li><a href="./LogoutServlet">Logout</a></li>
 
 				</ul>
 			</div>
