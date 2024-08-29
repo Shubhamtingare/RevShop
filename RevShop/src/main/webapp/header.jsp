@@ -16,11 +16,12 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
 </head>
-<body style="background-color: #ff00bf;">
+<body style="background-color: #ff012f;font-family: Verdana, sans-serif;">
 	<!--Company Header Starting  -->
 	<div class="container-fluid text-center"
-		style="margin-top: 45px; background-color: #000123; color: white; padding: 5px;">
+		style="margin-top: 45px; background-color: #111; color: white; padding: 5px;">
 		<h2>RevShop</h2>
 		<h6>We specialize in Electronics</h6>
 		<form class="form-inline" action="index.jsp" method="get">
@@ -45,7 +46,7 @@
 	%>
 
 	<!-- Starting Navigation Bar -->
-	<nav class="navbar navbar-default navbar-fixed-top">
+	<nav class="navbar navbar-default navbar-fixed-top navbar-custom" style="background-color: #333;">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -53,13 +54,12 @@
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.jsp"><span
-					class="glyphicon glyphicon-home">&nbsp;</span>RevShop</a>
+				<a class="navbar-brand" href="index.jsp">RevShop</a>
 			</div>
-			<div class="collapse navbar-collapse" id="myNavbar">
+			<div class="collapse navbar-collapse" id="myNavbar" style="background-color: #333;">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="login.jsp">Register</a></li>
-					<li><a href="register.jsp">Login</a></li>
+				<li><a href="register.jsp">Register</a></li>
+					<li><a href="login.jsp">Login</a></li>
 					<li><a href="index.jsp">Products</a></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="#">Category <span class="caret"></span>
@@ -130,7 +130,7 @@
 					%>
 					<li><a href="orderDetails.jsp">Orders</a></li>
 					<li><a href="userProfile.jsp">Profile</a></li>
-					<li><a href="./LogoutSrv">Logout</a></li>
+					<li><a href="./LogoutServlet">Logout</a></li>
 				</ul>
 			</div>
 		</div>

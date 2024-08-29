@@ -85,7 +85,7 @@
 					</p>
 					<form method="post">
 						<button type="submit"
-							formaction="./RemoveProductSrv?prodid=<%=product.getProdId()%>"
+							formaction="./RemoveProductServlet?prodid=<%=product.getProdId()%>"
 							class="btn btn-danger">Remove Product</button>
 						&nbsp;&nbsp;&nbsp;
 						<button type="submit"
