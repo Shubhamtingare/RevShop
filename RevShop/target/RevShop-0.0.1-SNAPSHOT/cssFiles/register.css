@@ -1,0 +1,134 @@
+@charset "UTF-8";
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 100%;
+    margin: 80px auto; /* Adjust this margin if needed */
+    display: flex; /* Flexbox for overall layout */
+    justify-content: space-around;
+    align-items: center;
+    background-color: #E6F9E6 !important;
+}
+
+.row {
+    display: flex; /* Flexbox for row layout */
+    width: 100%; /* Ensure the row uses full width */
+    gap: 20px; /* Space between the boxes */
+    justify-content: center;
+}
+
+.box {
+    border-radius: 10px;
+    padding: 20px;
+    width: 450px; /* Increased width for the boxes */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.box-left, .box-right {
+    background: linear-gradient(135deg, #FFE5CC, #FFB6C1); /* Same gradient for left box */
+    border: 2px solid black;
+}
+
+.box-right {
+    background: linear-gradient(135deg, #F0FFF0, #E6E6FA); /* Different gradient for right box */
+    border: 2px solid #ccc;
+}
+
+/* Ensure equal size for both boxes */
+.container > .box {
+    flex: 1;
+    max-width: 450px; /* Ensure no overflow */
+}
+
+/* Box hover effect */
+.box:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+h2 {
+    color: green;
+    text-align: center;
+}
+
+p.message {
+    color: #ff0080;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 5px; /* Adjusted bottom margin for spacing */
+}
+
+.form-group label {
+    display: block;
+    font-size: 16px; /* Adjust font size for better readability */
+    margin-bottom: 5px; /* Increase margin for spacing */
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 5px 100px; /* Increased padding for a better feel */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box; /* Ensure padding is included in width */
+    font-size: 16px; /* Increase font size for better readability */
+}
+
+.form-group input {
+    height: 30px; /* Adjust height for input boxes */
+}
+
+.form-group textarea {
+    height: 100px; /* Adjust height for textarea */
+}
+
+/* Buttons */
+.row.text-center {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-block;
+    margin: 0 10px; /* Reduced margin for buttons */
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: green;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-danger {
+    background-color: rgb(255, 128, 128);
+}
+
+.btn-success {
+    background-color: rgb(128, 255, 0);
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+.btn-danger:hover {
+    background-color: rgb(255, 0, 0);
+}
+
+.btn-success:hover {
+    background-color: rgb(0, 128, 0);
+}

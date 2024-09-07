@@ -1,167 +1,136 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page
-	import="com.revature.service.dao.*, com.revature.service.*,com.revature.data.*,java.util.*,jakarta.servlet.ServletOutputStream,java.io.*"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.revature.service.dao.*, com.revature.service.*,com.revature.data.*,java.util.*,jakarta.servlet.ServletOutputStream,java.io.*"%>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Cart Details</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="css/changes.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Cart Details</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="cssFiles/cartDetails.css">
 </head>
-<body style="background-color: #E6F9E6;">
+<body>
 
-	<%
-	/* Checking the user credentials */
-	String userName = (String) session.getAttribute("username");
-	String password = (String) session.getAttribute("password");
+    <%
+    /* Checking the user credentials */
+    String userName = (String) session.getAttribute("username");
+    String password = (String) session.getAttribute("password");
 
-	if (userName == null || password == null) {
+    if (userName == null || password == null) {
+        response.sendRedirect("login.jsp?message=Session Expired, Login Again!!");
+    }
 
-		response.sendRedirect("login.jsp?message=Session Expired, Login Again!!");
+    String addS = request.getParameter("add");
+    if (addS != null) {
 
-	}
+        int add = Integer.parseInt(addS);
+        String uid = request.getParameter("uid");
+        String pid = request.getParameter("pid");
+        int avail = Integer.parseInt(request.getParameter("avail"));
+        int cartQty = Integer.parseInt(request.getParameter("qty"));
+        CartServiceImpl cart = new CartServiceImpl();
 
-	String addS = request.getParameter("add");
-	if (addS != null) {
+        if (add == 1) {
+            // Add Product into the cart
+            cartQty += 1;
+            if (cartQty <= avail) {
+                cart.addProductToCart(uid, pid, 1);
+            } else {
+                response.sendRedirect("./AddToCart?pid=" + pid + "&pqty=" + cartQty);
+            }
+        } else if (add == 0) {
+            // Remove Product from the cart
+            cart.removeProductFromCart(uid, pid);
+        }
+    }
+    %>
 
-		int add = Integer.parseInt(addS);
-		String uid = request.getParameter("uid");
-		String pid = request.getParameter("pid");
-		int avail = Integer.parseInt(request.getParameter("avail"));
-		int cartQty = Integer.parseInt(request.getParameter("qty"));
-		CartServiceImpl cart = new CartServiceImpl();
+    <jsp:include page="header.jsp" />
 
-		if (add == 1) {
-			//Add Product into the cart
-			cartQty += 1;
-			if (cartQty <= avail) {
-		cart.addProductToCart(uid, pid, 1);
-			} else {
-		response.sendRedirect("./AddtoCart?pid=" + pid + "&pqty=" + cartQty);
-			}
-		} else if (add == 0) {
-			//Remove Product from the cart
-			cart.removeProductFromCart(uid, pid);
-		}
-	}
-	%>
+    <div class="text-center custom-title">Cart Items</div>
 
+    <!-- Start of Product Items List -->
+    <div class="container">
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th>Picture</th>
+                    <th>Products</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Add</th>
+                    <th>Remove</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%
+                CartServiceImpl cart = new CartServiceImpl();
+                List<CartData> cartItems = new ArrayList<CartData>();
+                cartItems = cart.getAllCartItems(userName);
+                double totAmount = 0;
+                for (CartData item : cartItems) {
 
+                    String prodId = item.getProdId();
+                    int prodQuantity = item.getQuantity();
+                    ProductData product = new ProductServiceImpl().getProductDetails(prodId);
+                    double currAmount = product.getProdPrice() * prodQuantity;
+                    totAmount += currAmount;
 
-	<jsp:include page="header.jsp" />
+                    if (prodQuantity > 0) {
+                %>
+                <tr>
+                    <td><img src="./ShowImage?pid=<%=product.getProdId()%>" class="product-image"></td>
+                    <td><%=product.getProdName()%></td>
+                    <td><%=product.getProdPrice()%></td>
+                    <td>
+                        <form method="post" action="./UpdateToCart">
+                            <input type="number" name="pqty" value="<%=prodQuantity%>" class="quantity-input" min="0"> 
+                            <input type="hidden" name="pid" value="<%=product.getProdId()%>"> 
+                            <input type="submit" name="Update" value="Update" class="custom-button update-button">
+                        </form>
+                    </td>
+                    <td>
+                        <a href="cartDetails.jsp?add=1&uid=<%=userName%>&pid=<%=product.getProdId()%>&avail=<%=product.getProdQuantity()%>&qty=<%=prodQuantity%>" class="custom-icon">+</a>
+                    </td>
+                    <td>
+                        <a href="cartDetails.jsp?add=0&uid=<%=userName%>&pid=<%=product.getProdId()%>&avail=<%=product.getProdQuantity()%>&qty=<%=prodQuantity%>" class="custom-icon">-</a>
+                    </td>
+                    <td><%=currAmount%></td>
+                </tr>
+                <%
+                    }
+                }
+                %>
 
-	<div class="text-center"
-		style="color: green; font-size: 24px; font-weight: bold;">Cart
-		Items</div>
-	<!-- <script>document.getElementById('mycart').innerHTML='<i data-count="20" class="fa fa-shopping-cart fa-3x icon-white badge" style="background-color:#333;margin:0px;padding:0px; margin-top:5px;"></i>'</script>
- -->
-	<!-- Start of Product Items List -->
-	<div class="container">
+                <tr class="total-row">
+                    <td colspan="6" class="text-center">Total Amount to Pay (in Rupees)</td>
+                    <td><%=totAmount%></td>
+                </tr>
+                <%
+                if (totAmount != 0) {
+                %>
+                <tr class="action-row">
+                    <td colspan="4" class="text-center">
+                    <td>
+                        <form method="post">
+                            <button formaction="userHome.jsp" class="custom-button cancel-button">Cancel</button>
+                        </form>
+                    </td>
+                    <td colspan="2" align="center">
+                        <form method="post">
+                            <button formaction="payment.jsp?amount=<%=totAmount%>" class="custom-button pay-button">Pay Now</button>
+                        </form>
+                    </td>
+                </tr>
+                <%
+                }
+                %>
+            </tbody>
+        </table>
+    </div>
+    <!-- End of Product Items List -->
 
-		<table class="table table-hover">
-			<thead
-				style="background-color: #186188; color: white; font-size: 16px; font-weight: bold;">
-				<tr>
-					<th>Picture</th>
-					<th>Products</th>
-					<th>Price</th>
-					<th>Quantity</th>
-					<th>Add</th>
-					<th>Remove</th>
-					<th>Amount</th>
-				</tr>
-			</thead>
-			<tbody
-				style="background-color: white; font-size: 15px; font-weight: bold;">
-
-
-
-				<%
-				CartServiceImpl cart = new CartServiceImpl();
-				List<CartData> cartItems = new ArrayList<CartData>();
-				cartItems = cart.getAllCartItems(userName);
-				double totAmount = 0;
-				for (CartData item : cartItems) {
-
-					String prodId = item.getProdId();
-
-					int prodQuantity = item.getQuantity();
-
-					ProductData product = new ProductServiceImpl().getProductDetails(prodId);
-
-					double currAmount = product.getProdPrice() * prodQuantity;
-
-					totAmount += currAmount;
-
-					if (prodQuantity > 0) {
-				%>
-
-				<tr>
-					<td><img src="./ShowImage?pid=<%=product.getProdId()%>"
-						style="width: 50px; height: 50px;"></td>
-					<td><%=product.getProdName()%></td>
-					<td><%=product.getProdPrice()%></td>
-					<td><form method="post" action="./UpdateToCart">
-							<input type="number" name="pqty" value="<%=prodQuantity%>"
-								style="max-width: 70px;" min="0"> <input type="hidden"
-								name="pid" value="<%=product.getProdId()%>"> <input
-								type="submit" name="Update" value="Update"
-								style="max-width: 80px;">
-						</form></td>
-					<td><a
-						href="cartDetails.jsp?add=1&uid=<%=userName%>&pid=<%=product.getProdId()%>&avail=<%=product.getProdQuantity()%>&qty=<%=prodQuantity%>"><i
-							class="fa fa-plus"></i></a></td>
-					<td><a
-						href="cartDetails.jsp?add=0&uid=<%=userName%>&pid=<%=product.getProdId()%>&avail=<%=product.getProdQuantity()%>&qty=<%=prodQuantity%>"><i
-							class="fa fa-minus"></i></a></td>
-					<td><%=currAmount%></td>
-				</tr>
-
-				<%
-				}
-				}
-				%>
-
-				<tr style="background-color: grey; color: white;">
-					<td colspan="6" style="text-align: center;">Total Amount to
-						Pay (in Rupees)</td>
-					<td><%=totAmount%></td>
-				</tr>
-				<%
-				if (totAmount != 0) {
-				%>
-				<tr style="background-color: grey; color: white;">
-					<td colspan="4" style="text-align: center;">
-					<td><form method="post">
-							<button formaction="userHome.jsp"
-								style="background-color: black; color: white;">Cancel</button>
-						</form></td>
-					<td colspan="2" align="center"><form method="post">
-							<button style="background-color: blue; color: white;"
-								formaction="payment.jsp?amount=<%=totAmount%>">Pay Now</button>
-						</form></td>
-
-				</tr>
-				<%
-				}
-				%>
-			</tbody>
-		</table>
-	</div>
-	<!-- ENd of Product Items List -->
-
-
-	<%@ include file="footer.html"%>
+    <jsp:include page="footer.html" />
 
 </body>
 </html>

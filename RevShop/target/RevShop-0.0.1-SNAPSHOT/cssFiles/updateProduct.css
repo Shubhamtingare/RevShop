@@ -1,0 +1,94 @@
+@charset "UTF-8";
+/* changes.css */
+
+body.background {
+    background-color: #E6F9E6;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+}
+
+.form-container {
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #FFE5CC;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-header h2 {
+    color: green;
+}
+
+.form-header img {
+    display: block;
+    margin: 0 auto;
+}
+
+.message {
+    color: blue;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.form-group textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-cancel {
+    background-color: #dc3545;
+}
+
+.btn-cancel:hover {
+    background-color: #c82333;
+}
+
+.btn-submit {
+    background-color: #28a745;
+}
+
+.btn-submit:hover {
+    background-color: #218838;
+}

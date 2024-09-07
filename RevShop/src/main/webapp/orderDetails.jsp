@@ -1,90 +1,70 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="com.revature.service.dao.*, com.revature.service.*,com.revature.data.*,java.util.*,jakarta.servlet.ServletOutputStream,java.io.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Order Details</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="css/changes.css">
+    <title>Order Details</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="cssFiles/orderDetails.css">
 </head>
 <body style="background-color: #E6F9E6;">
 
-	<%
-	/* Checking the user credentials */
-	String userName = (String) session.getAttribute("username");
-	String password = (String) session.getAttribute("password");
+    <jsp:include page="header.jsp" />
+    
+    <div class="text-center"
+        style="color: green; font-size: 24px; font-weight: bold;">Order Details</div>
 
-	if (userName == null || password == null) {
+    <div class="container">
+        <div class="table-responsive">
+            <c:choose>
+                <c:when test="${not empty orders}">
+                    <table class="table table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <th>Picture</th>
+                                <th>ProductName</th>
+                                <th>OrderId</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach var="order" items="${orders}">
+                                <tr>
+                                    <td data-label="Picture">
+                                        <img src="./ShowImage?pid=${order.productId}" alt="Product Image">
+                                    </td>
+                                    <td data-label="ProductName">${order.prodName}</td>
+                                    <td data-label="OrderId">${order.orderId}</td>
+                                    <td data-label="Quantity">${order.qty}</td>
+                                    <td data-label="Price">Rs ${order.amount}</td>
+                                    <td data-label="Time">${order.time}</td>
+                                    <td data-label="Status" class="text-success">
+                                        <c:choose>
+                                            <c:when test="${order.shipped == 0}">
+                                                ORDER_PLACED
+                                            </c:when>
+                                            <c:otherwise>
+                                                ORDER_SHIPPED
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </c:when>
+                <c:otherwise>
+                    <p>No orders found.</p>
+                </c:otherwise>
+            </c:choose>
+        </div>
+    </div>
 
-		response.sendRedirect("login.jsp?message=Session Expired, Login Again!!");
-
-	}
-
-	OrderService dao = new OrderServiceImpl();
-	List<OrderDetails> orders = dao.getAllOrderDetails(userName);
-	%>
-
-
-
-	<jsp:include page="header.jsp" />
-
-	<!-- <script>document.getElementById('mycart').innerHTML='<i data-count="20" class="fa fa-shopping-cart fa-3x icon-white badge" style="background-color:#333;margin:0px;padding:0px; margin-top:5px;"></i>'</script>
- -->
-	<div class="text-center"
-		style="color: green; font-size: 24px; font-weight: bold;">Order
-		Details</div>
-	<!-- Start of Product Items List -->
-	<div class="container">
-		<div class="table-responsive ">
-			<table class="table table-hover table-sm">
-				<thead
-					style="background-color: black; color: white; font-size: 14px; font-weight: bold;">
-					<tr>
-						<th>Picture</th>
-						<th>ProductName</th>
-						<th>OrderId</th>
-						<th>Quantity</th>
-						<th>Price</th>
-						<th>Time</th>
-						<th>Status</th>
-					</tr>
-				</thead>
-				<tbody
-					style="background-color: white; font-size: 15px; font-weight: bold;">
-					<%
-					for (OrderDetails order : orders) {
-					%>
-
-					<tr>
-						<td><img src="./ShowImage?pid=<%=order.getProductId()%>"
-							style="width: 50px; height: 50px;"></td>
-						<td><%=order.getProdName()%></td>
-						<td><%=order.getOrderId()%></td>
-						<td><%=order.getQty()%></td>
-						<td><%=order.getAmount()%></td>
-						<td><%=order.getTime()%></td>
-						<td class="text-success"><%=order.getShipped() == 0 ? "ORDER_PLACED" : "ORDER_SHIPPED"%></td>
-					</tr>
-
-					<%
-					}
-					%>
-
-				</tbody>
-			</table>
-		</div>
-	</div>
-	<!-- ENd of Product Items List -->
-
-
-	<%@ include file="footer.html"%>
+    <%@ include file="footer.html"%>
 </body>
 </html>

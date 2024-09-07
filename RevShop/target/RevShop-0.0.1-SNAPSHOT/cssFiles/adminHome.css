@@ -1,0 +1,82 @@
+@charset "UTF-8";
+
+/* Body Styling */
+body {
+    background: linear-gradient(135deg, #E6F9E6 40%, #B8E6B8 100%);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+/* Container Styling */
+.admin-container {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    animation: slideIn 0.5s ease-out;
+    margin-bottom: 50px; /* Ensures it stays clear of the footer */
+}
+
+/* Button Styling */
+.custom-button {
+    padding: 15px 30px;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 10px 0;
+    transition: all 0.3s ease;
+    width: 100%;
+    display: block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Different Backgrounds for Each Button */
+.view-products {
+    background: linear-gradient(135deg, #4CAF50, #81C784);
+}
+
+.add-products {
+    background: linear-gradient(135deg, #FF9800, #FFB74D);
+}
+
+.remove-products {
+    background: linear-gradient(135deg, #F44336, #E57373);
+}
+
+.update-products {
+    background: linear-gradient(135deg, #2196F3, #64B5F6);
+}
+
+/* Hover Effect for Buttons */
+.custom-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Tab Styling */
+.tab {
+    margin-top: 20px;
+}
+
+/* Animation */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

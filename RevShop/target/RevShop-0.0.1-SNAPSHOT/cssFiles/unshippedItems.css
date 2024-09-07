@@ -1,0 +1,84 @@
+body.background {
+    background-color: #E6F9E6;
+    font-family: Arial, sans-serif;
+}
+
+.heading {
+    color: green;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.container {
+    width: 90%;
+    margin: 20px auto;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table thead {
+    background: linear-gradient(to right, #700fb7, #9b59b6);
+    color: white;
+    font-size: 16px;
+}
+
+.table th, .table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+    overflow-x: hidden; /* Ensure no scrollbar appears on hover */
+}
+
+.table a {
+    color: #700fb7;
+    text-decoration: none;
+}
+
+.table a:hover {
+    text-decoration: underline;
+}
+
+.status {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.btn-success {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #ff5722; /* New background color */
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.btn-success:hover {
+    background-color: #e64a19; /* Slightly darker shade on hover */
+}
+
+.no-items {
+    background-color: grey;
+    color: white;
+    text-align: center;
+}

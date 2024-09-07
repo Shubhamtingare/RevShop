@@ -6,74 +6,93 @@
 <head>
 <meta charset="UTF-8">
 <title>Login</title>
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="css/changes.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="cssFiles/login.css">
+
 </head>
-<body style="background-color: #E6F9E6;">
+<body>
 
-	<%@ include file="header.jsp"%>
-
-	<%
-	String message = request.getParameter("message");
+   <%
+	// Set the request attribute to hide specific header content
+	request.setAttribute("headerContent", "hideHeaderContent");
 	%>
-	<div class="container">
-		<div class="row"
-			style="margin-top: 5px; margin-left: 2px; margin-right: 2px;">
-			<form action="./LoginServlet" method="post"
-				class="col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2"
-				style="border: 2px solid black; border-radius: 10px; background-color: #FFE5CC; padding: 10px;">
-				<div style="font-weight: bold;" class="text-center">
-					<h2 style="color: green;">Login Form</h2>
-					<%
-					if (message != null) {
-					%>
-					<p style="color: blue;">
-						<%=message%>
-					</p>
-					<%
-					}
-					%>
-				</div>
-				<div></div>
-				<div class="row">
-					<div class="col-md-12 form-group">
-						<label for="last_name">Username</label> <input type="email"
-							placeholder="Enter Username" name="username" class="form-control"
-							id="last_name" required>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12 form-group">
-						<label for="last_name">Password</label> <input type="password"
-							placeholder="Enter Password" name="password" class="form-control"
-							id="last_name" required>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12 form-group">
-						<label for="userrole">Login As</label> <select name="usertype"
-							id="userrole" class="form-control" required>
-							<option value="customer" selected>CUSTOMER</option>
-							<option value="admin">ADMIN</option>
-						</select>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<button type="submit" class="btn btn-success">Login</button>
-					</div>
-				</div>
-			</form>
+	<%@ include file="header.jsp"%>
+	
+    <%
+    String message = request.getParameter("message");
+    %>
+    <div class="login-container">
+            <!-- Login Form on the left side -->
+            <div class="box box-left">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h2>Login Here</h2>
+                    </div>
+                    <div class="panel-body">
+                        <%
+                        if (message != null) {
+                        %>
+                        <p style="color: black;">
+                            <%=message%>
+                        </p>
+                        <%
+                        }
+                        %>
+                        <form action="./LoginServlet" method="post">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" placeholder="Enter Email" name="username"
+                                    id="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" placeholder="Enter Password" name="password"
+                                    id="password" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="userrole">Login As</label>
+                                <select name="usertype" id="userrole" required>
+                                    <option value="customer" selected>CUSTOMER</option>
+                                    <option value="admin">ADMIN</option>
+                                </select>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content on the right side -->
+            <div class="box box-right">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h2>Welcome Back!</h2>
+                    </div>
+                    <div class="panel-body">
+                        <p>
+                            We're glad to see you again! Logging in allows you to access your personalized dashboard, manage your account, and enjoy a seamless shopping experience.
+                        </p>
+                        <p>
+                            By logging in, you can:
+                            <ul style="list-style-type: disc; padding-left: 20px;">
+                                <li>View and track your orders</li>
+                                <li>Save your favorite products</li>
+                                <li>Receive personalized recommendations</li>
+                                <li>Access exclusive deals and discounts</li>
+                            </ul>
+                        </p>
+                        <p>
+                            Don't have an account yet? <a href="register.jsp" style="color: green;">Sign up now</a> and join our community!
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-		</div>
-	</div>
+        </div>
+  
 
-	<%@ include file="footer.html"%>
+    <%@ include file="footer.html"%>
 
 </body>
 </html>

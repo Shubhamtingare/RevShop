@@ -1,0 +1,128 @@
+@charset "UTF-8";
+
+/* General body styling */
+body.background {
+    background: linear-gradient(135deg, #E6F9E6, #A0D6B4);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container styling */
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Breadcrumb styling */
+.breadcrumb {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    font-size: 14px;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.breadcrumb a:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+/* Profile container styling */
+.profile-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Profile card styling */
+.profile-card {
+    width: 100%;
+    max-width: 350px;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Profile image styling */
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: contain;
+    border: 4px solid #007bff;
+    transition: border-color 0.3s ease;
+}
+
+.profile-image:hover {
+    border-color: #0056b3;
+}
+
+/* Profile name styling */
+.profile-name {
+    margin: 20px 0;
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Profile details styling */
+.profile-details {
+    flex: 1;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.profile-details:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Profile info styling */
+.profile-info {
+    font-size: 16px;
+    color: #555;
+}
+
+.profile-info p {
+    margin: 15px 0;
+    transition: color 0.3s ease;
+}
+
+.profile-info p:hover {
+    color: #333;
+}
+
+/* Strong text styling */
+.profile-info strong {
+    color: #000;
+}

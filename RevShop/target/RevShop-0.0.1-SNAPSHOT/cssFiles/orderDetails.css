@@ -1,0 +1,119 @@
+@charset "UTF-8";
+
+/* Body styling to prevent overflow */
+body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #E6F9E6, #A0D6B4);
+}
+
+/* Container styling */
+.container {
+    max-width: 90%; /* Adjusted width to provide equal space on both sides */
+    padding: 20px; /* Added some padding for better spacing */
+    margin: 0 auto;
+    background: white; /* Background color for the container */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* Added box shadow for a subtle elevation effect */
+    border-radius: 8px; /* Rounded corners for a smoother look */
+}
+
+/* Table responsiveness */
+.table-responsive {
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 15px;
+    text-align: left;
+}
+
+/* Table header styling */
+thead th {
+    background-color: #004d40;
+    color: white;
+    font-weight: bold;
+    padding: 12px;
+    text-transform: uppercase; /* Advanced styling: Uppercase text */
+    letter-spacing: 1px; /* Advanced styling: Spacing between letters */
+}
+
+/* Table body styling */
+tbody tr {
+    background-color: white;
+    font-weight: bold;
+    border-bottom: 1px solid #dddddd;
+    transition: background-color 0.3s ease; /* Advanced styling: Smooth transition for hover effect */
+}
+
+tbody tr:hover {
+    background-color: #f1f8e9; /* Highlight row on hover */
+}
+
+tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+/* Table cell styling */
+td, th {
+    padding: 12px;
+    text-align: center;
+    transition: transform 0.2s ease; /* Advanced styling: Smooth transformation on hover */
+}
+
+td:hover {
+    transform: scale(1.05); /* Slightly enlarge cells on hover */
+}
+
+/* Image styling */
+td img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 4px; /* Added rounded corners to images */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for images */
+}
+
+/* Status text */
+.text-success {
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 768px) {
+    thead {
+        display: none; /* Hide table headers on small screens */
+    }
+
+    tbody, tr, td {
+        display: block; /* Make each row a block */
+        width: 100%;
+    }
+
+    tr {
+        margin-bottom: 15px;
+    }
+
+    td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    td::before {
+        content: attr(data-label); /* Add data-label attribute as content */
+        position: absolute;
+        left: 0;
+        width: 50%;
+        padding-left: 15px;
+        font-weight: bold;
+        text-align: left;
+    }
+}

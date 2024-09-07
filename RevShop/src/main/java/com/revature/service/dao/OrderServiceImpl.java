@@ -11,14 +11,16 @@ import com.revature.data.CartData;
 import com.revature.data.OrderData;
 import com.revature.data.OrderDetails;
 import com.revature.data.TransactionData;
+import com.revature.service.OrderService;
 import com.revature.utilities.DBUtil;
 import com.revature.utilities.MailMessage;
 
 
-public class OrderServiceImpl implements com.revature.service.OrderService {
+public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public String paymentSuccess(String userName, double paidAmount) {
+		System.out.println("code reached here");
 		String status = "Order Placement Failed!";
 
 		List<CartData> cartItems = new ArrayList<CartData>();
@@ -31,10 +33,6 @@ public class OrderServiceImpl implements com.revature.service.OrderService {
 		boolean ordered = false;
 
 		String transactionId = transaction.getTransactionId();
-
-		// System.out.println("Transaction: "+transaction.getTransactionId()+"
-		// "+transaction.getTransAmount()+" "+transaction.getUserName()+"
-		// "+transaction.getTransDateTime());
 
 		for (CartData item : cartItems) {
 

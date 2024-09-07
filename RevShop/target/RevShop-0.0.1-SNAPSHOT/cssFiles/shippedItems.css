@@ -1,0 +1,76 @@
+body.background {
+    background-color: #E6F9E6;
+    font-family: Arial, sans-serif;
+}
+
+.heading {
+    color: green;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.container {
+    width: 90%;
+    margin: 20px auto;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table thead {
+    background: linear-gradient(to right, #115884, #1c7ca3);
+    color: white;
+    font-size: 18px;
+}
+
+.table th, .table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+    transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.table tbody tr:hover {
+    background-color: #f1f1f1;
+    overflow-x: hidden; /* Prevent horizontal scrollbar on hover */
+}
+
+.table a {
+    color: #115884;
+    text-decoration: none;
+    transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.table a:hover {
+    text-decoration: underline;
+    color: #0d5a75; /* Slightly darker shade on hover */
+}
+
+.shipped {
+    color: green;
+    font-weight: bold;
+}
+
+.no-items {
+    background-color: grey;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    padding: 20px;
+}

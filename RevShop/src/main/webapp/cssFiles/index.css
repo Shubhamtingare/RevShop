@@ -1,0 +1,136 @@
+/* Container */
+.container {
+    max-width: 100%;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+/* Row */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Ensure even spacing */
+    margin: -15px 0 0 -15px; /* Fix margin issues */
+}
+/* Card */
+.product-card {
+    padding: 15px;
+    width: calc(33.333% - 30px); /* Three cards per row with spacing */
+    box-sizing: border-box; /* Ensure padding is included in width */
+    margin-bottom: 30px; /* Space between rows */
+    display: flex;
+    flex-direction: column; /* Allow column layout for content */
+}
+
+/* Thumbnail */
+.thumbnail {
+    flex: 1; /* Allow the thumbnail to grow and shrink */
+    background-color: #e2e6e9; /* Background color for cards */
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Product Image */
+.thumbnail img {
+    width: 200px; /* Fixed width for image */
+    height: 200px; /* Fixed height for image */
+    object-fit: contain; /* Ensure image scales correctly */
+    margin-bottom: 10px; /* Space between image and text */
+}
+
+/* Product Name */
+.productname {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    height: auto; /* Allow height to adjust based on content */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal; /* Allow wrapping */
+}
+
+/* Product Info */
+.productinfo {
+    font-size: 14px;
+    color: #777;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    height: auto; /* Allow height to adjust based on content */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal; /* Allow wrapping */
+}
+
+/* Price */
+.price {
+    font-size: 18px;
+    color: #ff5722;
+    margin-bottom: 15px;
+}
+
+/* Buttons */
+.thumbnail button {
+    width: 120px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color:  #c5cdd3;
+}
+.addcart{
+	background: linear-gradient(135deg, #c5cdd3,  #99a7b2);
+}
+
+.buynow{
+	background: linear-gradient(135deg, #a9b6d6,  #758abd);
+}
+
+.btn-outline-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-outline-success:hover {
+    background-color: #218838;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+}
+
+/* Animation */
+.thumbnail {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s forwards ease;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
